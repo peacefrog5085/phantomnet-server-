@@ -1,16 +1,9 @@
-name: ssh-proxy-server
+name: tmate-ssh-session
 on:
   workflow_dispatch:
 jobs:
-  ssh-job:
+  tmate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Setup SSH
-        uses: P3P3L0/action-ssh-server@v1.0.3
-        with:
-          SSH_USERS: "user:1001:1001"
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-          SSH_PORT: 2222
-          SSH_AUTHORIZED_KEYS: ${{ secrets.SSH_PUBLIC_KEY }}
+      - uses: mxschmitt/action-tmate@v3

@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Start tmate session
-        uses: tmate-io/tmate-action@v2
+        uses: tmate-io/tmate-action@v2.0.2
         with:
           limit-access-to-actor: true

@@ -5,7 +5,13 @@ jobs:
   tmate-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Install tmate
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tmate
+          
       - name: Start tmate session
-        uses: tmate-io/tmate-action@v2.0.2
-        with:
-          limit-access-to-actor: true
+        run: |
+          tmate -S /tmp/tmate.sock new-session -d
+          tmate -S /tmp/tmate.sock wait tmate-ready
+          tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}'
